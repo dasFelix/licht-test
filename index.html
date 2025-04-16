@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Licht schalten</title>
+</head>
+<body>
+  <h2>Licht wird geschaltet...</h2>
+  <script>
+    fetch("https://hooks.nabu.casa/gAAAAABn_-3pGy8O6hlqfENZZp2pN8x1s3jdn_Z5U-9pORE9emmZIIn47F1DeBy_jz0rRHwsq7jJL3Bl-wOD7KzgUP1fNkgbW1Zn9ZUahYtdDbCGOnLzEs9UsWi1CiZNmV2GbdEVnkTCBcIdJsRTwc7ALrTC7WotNbC057DbecADjP3fm3z8N2M=", {
+      method: "POST"
+    }).then(() => {
+      document.body.innerHTML += "<p>✅ Licht wurde geschaltet!</p>";
+    }).catch(() => {
+      document.body.innerHTML += "<p>❌ Fehler beim Auslösen.</p>";
+    });
+  </script>
+</body>
+</html>
