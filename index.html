@@ -2,17 +2,67 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Licht schalten</title>
+  <title>Home Assistant Trigger</title>
+  <style>
+    body {
+      background: #000000;
+      color: #00ff88;
+      font-family: "Courier New", Courier, monospace;
+      text-align: center;
+      padding-top: 10vh;
+      user-select: none;
+    }
+
+    .glow {
+      text-shadow: 0 0 5px #00ff88, 0 0 10px #00ff88, 0 0 20px #00ff88;
+      font-size: 2.2rem;
+      animation: flicker 2s infinite;
+    }
+
+    .ascii {
+      margin-top: 40px;
+      font-size: 14px;
+      line-height: 1.4;
+      white-space: pre;
+      color: #0f0;
+    }
+
+    @keyframes flicker {
+      0%, 18%, 22%, 25%, 53%, 100% {
+        opacity: 1;
+      }
+      20%, 23%, 55% {
+        opacity: 0.3;
+      }
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #44ff99;
+    }
+  </style>
 </head>
 <body>
-  <h2>Licht wird geschaltet...</h2>
+  <div class="glow">🚀 Home Assistant Automation ausgeführt!</div>
+
+  <div class="ascii">
+    +------------------------------------+<br>
+    |   SYSTEM ONLINE                    |<br>
+    |   > Trigger erkannt <             |<br>
+    |   > Lichtsteuerung aktiviert <    |<br>
+    +------------------------------------+<br>
+  </div>
+
+  <div class="message" id="result"></div>
+
   <script>
     fetch("https://hooks.nabu.casa/gAAAAABn_-3pGy8O6hlqfENZZp2pN8x1s3jdn_Z5U-9pORE9emmZIIn47F1DeBy_jz0rRHwsq7jJL3Bl-wOD7KzgUP1fNkgbW1Zn9ZUahYtdDbCGOnLzEs9UsWi1CiZNmV2GbdEVnkTCBcIdJsRTwc7ALrTC7WotNbC057DbecADjP3fm3z8N2M=", {
       method: "POST"
     }).then(() => {
-      document.body.innerHTML += "<p>✅ Licht wurde geschaltet!</p>";
+      document.getElementById("result").innerHTML = "🟢 Automation erfolgreich ausgelöst.";
     }).catch(() => {
-      document.body.innerHTML += "<p>❌ Fehler beim Auslösen.</p>";
+      document.getElementById("result").innerHTML = "🟡 Automation möglicherweise ausgelöst.";
     });
   </script>
 </body>
